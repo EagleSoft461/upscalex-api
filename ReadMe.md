@@ -1,142 +1,192 @@
-🚀 UpscaleX API – AI Image Upscaling Service
+🚀 PixelBoost API (ByUpscaleX)
+> A monetizable AI image upscaling API built for SaaS founders and developers.
 
-High-performance AI Image Upscaling & Background Removal API
-Powered by Real-ESRGAN, built with FastAPI
+Production-ready Image Upscaling & Background Removal API
+Fast • Secure • Monetizable • Open Source
 
-Upscale images up to 4x resolution with blazing speed.
-Designed for developers, SaaS products, and AI pipelines.
+🔹 Built with FastAPI + Real-ESRGAN
+🔹 API Key & Rate Limit ready
+🔹 Free & Pro plans
+🔹 Designed for passive income & SaaS products
 
-✨ Features
+🌍 English
+✨ What is PixelBoost API?
 
-⚡ FastAPI backend (high performance)
+PixelBoost API is a high-performance image processing API that allows developers to:
 
-🧠 Real-ESRGAN (x4) image upscaling
+🔍 Upscale images with AI (Real-ESRGAN)
 
-🖼 Optional background removal
+🎭 Remove backgrounds (optional)
 
-🔑 API Key authentication
+🔐 Secure endpoints with API Keys
 
-🆓 Free & 💎 Pro plans
+⏱️ Apply daily rate limits (Free / Pro)
 
-⏱ Daily rate limiting
+💰 Monetize easily (Stripe-ready architecture)
 
-🧩 Clean, modular architecture
+Perfect for:
 
-🐳 Docker & cloud ready (coming soon)
+SaaS products
 
-📊 Free vs Pro
+Web & mobile apps
+
+Marketplaces
+
+Automation pipelines
+
+⚙️ Features
+
+✅ AI Image Upscaling (x4)
+
+✅ Background Removal (remove_bg=true)
+
+✅ API Key Authentication
+
+✅ Rate Limiting (Free vs Pro)
+
+✅ Health Check endpoint
+
+✅ Docker & Deploy ready
+
+✅ Clean & extendable architecture
+
+### 🤔 Why PixelBoost?
+
+Unlike simple AI demos, PixelBoost is designed as a **real product API**:
+- Built with monetization in mind
+- Clear Free / Pro separation
+- Ready for SaaS, not just experiments
+
+🆓 Free vs 💎 Pro
 Feature	Free	Pro
 Daily Requests	10 / day	Unlimited
-Upscale Resolution	x4	x4
-Background Removal	❌	✅
-Priority Processing	❌	✅
+Image Upscaling	✅	✅
+Background Removal	✅	✅
+Rate Limit Headers	✅	✅
 Commercial Use	❌	✅
-Support	Community	Priority
-🔐 Authentication
-
-All requests require an API key via header:
-
-x-api-key: YOUR_API_KEY
-
-
-Example:
-
-Free key → free_key_123
-
-Pro key → pro_key_abc
-
-🧪 API Usage
+Priority Support	❌	✅
+🔑 API Usage
 Health Check
-GET /health
+curl http://127.0.0.1:8000/health
 
-
-Response:
-
-{
-  "status": "ok",
-  "plans": {
-    "free_daily_limit": 10,
-    "pro": "unlimited"
-  }
-}
-
-Image Upscale
-curl -X POST "http://localhost:8000/upscale?remove_bg=false" \
+Upscale Image
+curl -X POST "http://127.0.0.1:8000/upscale?remove_bg=false" \
   -H "x-api-key: free_key_123" \
   -F "file=@image.png"
 
 
-✅ Returns a PNG image stream
-❌ Free users are rate-limited
+Response Headers
 
-⚠️ Rate Limiting
+X-Plan: free
+X-RateLimit-Limit: 10
+X-RateLimit-Remaining: 7
 
-Free users: 10 requests / day
+🛠️ Tech Stack
 
-Exceeding the limit returns:
+FastAPI
 
-{
-  "detail": "Günlük ücretsiz limit doldu"
-}
+PyTorch
 
+Real-ESRGAN
 
-Rate limit info is sent via headers:
+OpenCV
 
-X-RateLimit-Limit
-X-RateLimit-Remaining
+rembg
 
-🏗 Project Structure
-upscalex-api/
-├── main.py          # FastAPI app
-├── auth.py          # API key verification
-├── rate_limit.py   # Daily request limits
-├── config.py       # App configuration
-├── test_esrgan.py  # Local testing
-├── README.md
-└── .gitignore
+Docker (planned)
 
-💳 Pro Plan (Coming Soon)
+Stripe (planned)
 
-Stripe subscriptions
+### ▶️ Run Locally
 
-Monthly billing
+```bash
+git clone https://github.com/EagleSoft461/upscalex-api
+cd upscalex-api
+pip install -r requirements.txt
+uvicorn main:app --reload
+yaml
+Kodu kopyala
+```
 
-Unlimited requests
+🗺️ Roadmap
 
-Commercial license
+ Stripe payments (Pro plan)
 
-Priority inference
+ Web dashboard
 
-This repository is production-ready and designed to evolve into a paid SaaS.
+ User API key management
 
-🚀 Roadmap
+ Docker image
 
- Stripe integration
+ Cloud deployment (Railway / Fly.io)
 
- Dockerfile
+⭐ Support the Project
 
- Cloud deploy (Railway / Fly.io)
+If you like this project:
 
- Mini web demo
+⭐ Star the repo
 
- Usage analytics
+🍴 Fork it
 
-⭐ Why Star This Repo?
+🧠 Open issues / ideas
 
-Clean AI backend architecture
+🇹🇷 Türkçe
+✨ PixelBoost API Nedir?
 
-Real production use case
+PixelBoost API, geliştiricilerin uygulamalarına kolayca entegre edebileceği,
+yapay zekâ destekli bir görsel büyütme ve arka plan kaldırma API’sidir.
 
-Easy to extend
+Şunları sağlar:
 
-Perfect base for SaaS products
+🔍 AI ile görüntü büyütme
 
-If you find this project useful, please give it a star ⭐
+🎭 Arka plan kaldırma
 
-📜 License
+🔐 API Key ile güvenlik
 
-MIT License – free for personal use.
-Commercial use requires Pro plan.
+⏱️ Ücretsiz / Pro rate limit
+
+💰 Ürünleştirilebilir yapı (pasif gelir)
+
+⚙️ Özellikler
+
+✅ Yapay zekâ ile x4 upscaling
+
+✅ Arka plan kaldırma
+
+✅ API Key doğrulama
+
+✅ Günlük istek limiti
+
+✅ Sağlık kontrol endpoint’i
+
+✅ Ürünleşmeye hazır mimari
+
+🆓 Free vs 💎 Pro
+Özellik	Free	Pro
+Günlük İstek	10	Sınırsız
+Upscale	✅	✅
+Arka Plan Kaldırma	✅	✅
+Ticari Kullanım	❌	✅
+Öncelikli Destek	❌	✅
+🧪 Kullanım
+curl -X POST "http://127.0.0.1:8000/upscale" \
+  -H "x-api-key: free_key_123" \
+  -F "file=@resim.png"
+
+🎯 Kimler İçin?
+
+Web / Mobil geliştiriciler
+
+SaaS kurmak isteyenler
+
+Pasif gelir hedefleyenler
+
+AI tabanlı ürün geliştirenler
+
+📌 Repo
+
+👉 https://github.com/EagleSoft461/upscalex-api
 
 👤 Author
 
