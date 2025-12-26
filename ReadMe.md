@@ -1,93 +1,52 @@
 🚀 UpscaleX API – AI Image Upscaling Service
 
-UpscaleX is a fast, secure, and production-ready AI image upscaling API built with FastAPI and Real-ESRGAN.
+High-performance AI Image Upscaling & Background Removal API
+Powered by Real-ESRGAN, built with FastAPI
 
-🔍 4× AI Super Resolution
-🔐 API Key protected
-⚡ Built for developers & SaaS products
+Upscale images up to 4x resolution with blazing speed.
+Designed for developers, SaaS products, and AI pipelines.
 
 ✨ Features
 
-🧠 AI-powered 4× image upscaling
+⚡ FastAPI backend (high performance)
 
-✂️ Optional background removal
+🧠 Real-ESRGAN (x4) image upscaling
 
-🔐 API key authentication
+🖼 Optional background removal
+
+🔑 API Key authentication
+
+🆓 Free & 💎 Pro plans
 
 ⏱ Daily rate limiting
 
-📦 Simple REST API
+🧩 Clean, modular architecture
 
-🚀 Production-ready backend
+🐳 Docker & cloud ready (coming soon)
 
-📊 Plans
-Plan	Daily Limit	Upscaling	Background Removal
-Free	10 requests/day	✅	✅
-Pro	Unlimited	✅	✅
-🛠 Tech Stack
+📊 Free vs Pro
+Feature	Free	Pro
+Daily Requests	10 / day	Unlimited
+Upscale Resolution	x4	x4
+Background Removal	❌	✅
+Priority Processing	❌	✅
+Commercial Use	❌	✅
+Support	Community	Priority
+🔐 Authentication
 
-FastAPI
+All requests require an API key via header:
 
-PyTorch
-
-Real-ESRGAN
-
-OpenCV
-
-rembg
-
-Uvicorn
-
-📁 Project Structure
-upscalex-api/
-│
-├── main.py
-├── config.py
-├── auth.py
-├── rate_limit.py
-├── models/
-│   └── realesr-general-x4v3.pth
-├── .env
-├── requirements.txt
-└── README.md
-
-⚙️ Installation
-1️⃣ Clone the repository
-git clone https://github.com/EagleSoft461/upscalex-api.git
-cd upscalex-api
-
-2️⃣ Create virtual environment
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-
-3️⃣ Install dependencies
-pip install -r requirements.txt
-
-🔐 Environment Variables
-
-Create a .env file:
-
-MODEL_PATH=models/realesr-general-x4v3.pth
-SCALE=4
-DEVICE=auto
-
-API_KEYS_FREE=free_key_123
-API_KEYS_PRO=pro_key_456
-
-▶️ Run the Server
-uvicorn main:app --reload
+x-api-key: YOUR_API_KEY
 
 
-API will be available at:
+Example:
 
-http://127.0.0.1:8000
+Free key → free_key_123
 
+Pro key → pro_key_abc
 
-Swagger UI:
-
-http://127.0.0.1:8000/docs
-
-❤️ Health Check
+🧪 API Usage
+Health Check
 GET /health
 
 
@@ -101,71 +60,86 @@ Response:
   }
 }
 
-📸 Upscale Image
-Endpoint
-POST /upscale
-
-Headers
-x-api-key: free_key_123
-
-Form Data
-Field	Type
-file	image file
-remove_bg	boolean (optional)
-Example (cURL)
-curl -X POST "http://127.0.0.1:8000/upscale?remove_bg=false" \
+Image Upscale
+curl -X POST "http://localhost:8000/upscale?remove_bg=false" \
   -H "x-api-key: free_key_123" \
-  -F "file=@input.png"
+  -F "file=@image.png"
 
-📦 Response Headers
-Header	Description
-X-Plan	free / pro
-X-RateLimit-Limit	Daily limit
-X-RateLimit-Remaining	Remaining requests
-🚨 Error Codes
-Code	Meaning
-400	Invalid image
-401	Invalid API key
-429	Free limit exceeded
-500	Server error
-🎯 Use Cases
 
-SaaS image enhancement
+✅ Returns a PNG image stream
+❌ Free users are rate-limited
 
-AI photo tools
+⚠️ Rate Limiting
 
-E-commerce product images
+Free users: 10 requests / day
 
-Mobile & web apps
+Exceeding the limit returns:
 
-Background removal pipelines
+{
+  "detail": "Günlük ücretsiz limit doldu"
+}
 
-🧠 Roadmap
 
- Stripe payments
+Rate limit info is sent via headers:
 
- User dashboard
+X-RateLimit-Limit
+X-RateLimit-Remaining
+
+🏗 Project Structure
+upscalex-api/
+├── main.py          # FastAPI app
+├── auth.py          # API key verification
+├── rate_limit.py   # Daily request limits
+├── config.py       # App configuration
+├── test_esrgan.py  # Local testing
+├── README.md
+└── .gitignore
+
+💳 Pro Plan (Coming Soon)
+
+Stripe subscriptions
+
+Monthly billing
+
+Unlimited requests
+
+Commercial license
+
+Priority inference
+
+This repository is production-ready and designed to evolve into a paid SaaS.
+
+🚀 Roadmap
+
+ Stripe integration
+
+ Dockerfile
+
+ Cloud deploy (Railway / Fly.io)
+
+ Mini web demo
 
  Usage analytics
 
- Batch image processing
+⭐ Why Star This Repo?
 
- Docker & cloud deploy
+Clean AI backend architecture
 
-⭐ Support UpscaleX
+Real production use case
 
-If you like this project:
+Easy to extend
 
-⭐ Star the repository
+Perfect base for SaaS products
 
-🐛 Report issues
-
-🤝 Contribute
+If you find this project useful, please give it a star ⭐
 
 📜 License
 
-MIT License
+MIT License – free for personal use.
+Commercial use requires Pro plan.
 
-⚡ UpscaleX API
+👤 Author
 
+EagleSoft
+Building practical AI products.
 Sharper images. Smarter AI.
